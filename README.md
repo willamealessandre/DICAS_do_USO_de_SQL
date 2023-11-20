@@ -123,8 +123,17 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      -- Correto
      SELECT "order", "count" FROM orders;
      ```
+13. **Erro ao utilizar alguns comandos DLL**
+    - **Erro:** utilizou o comando ALTER TABLE sem a Palavra-chave
+    - **solução:** ordenou o que fosse feito usando o comando e a palavra-chave
+   ```sql
+   -- Errado
+   ALTER TABLE TBVEN FOREIGN KEY (CDCLI) REFERENCES TBCLI(CDCLI)
+   -- Correto
+   ALTER TABLE TBVEN ADD FOREIGN KEY (CDCLI) REFERENCES TBCLI(CDCLI)
+```
 
-13. **Erro de Agrupamento e Ordenação:**
+14. **Erro de Agrupamento e Ordenação:**
    - **Erro:** Tentativa de selecionar colunas não agregadas sem agrupamento em uma consulta GROUP BY.
    - **Solução:** Inclua as colunas não agregadas na cláusula GROUP BY ou use funções de agregação.
      ```sql
@@ -135,7 +144,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT department, COUNT(employee_name) FROM employees GROUP BY department;
      ```
 
-14. **Erro de Sintaxe em Subconsulta:**
+15. **Erro de Sintaxe em Subconsulta:**
    - **Erro:** Subconsulta mal formada.
    - **Solução:** Verifique a sintaxe da subconsulta e certifique-se de que ela retorna um único valor ou conjunto de valores.
      ```sql
@@ -146,7 +155,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT column_name FROM table_name WHERE column_name IN (SELECT column_name FROM another_table WHERE condition);
      ```
 
-15. **Erro de Nome de Tabela Incorreto:**
+16. **Erro de Nome de Tabela Incorreto:**
    - **Erro:** Referência a uma tabela inexistente ou com nome incorreto.
    - **Solução:** Verifique e corrija o nome da tabela.
      ```sql
@@ -156,7 +165,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      -- Correto
      SELECT column_name FROM existing_table;
      ```
-16. **Consulta Convertendo para Maiúsculas e Aplicando um Filtro:**
+17. **Consulta Convertendo para Maiúsculas e Aplicando um Filtro:**
 ```sql
 -- Errado
 SELECT employee_id, employee_name
@@ -169,7 +178,7 @@ FROM employees
 WHERE UPPER(employee_name) = 'JOHN';
 ```
 
-17. **Agrupamentos e funções de agregação**
+18. **Agrupamentos e funções de agregação**
     - **Erro:** Uso de duas coluas para agrupamente por data entrega mais de um resultado por datas iguais.
     - **Solução:** Utilizar apenas um agrupamento no group by e usar uma função de agregação(MAX) para entregar o maior valor daquela data
 
