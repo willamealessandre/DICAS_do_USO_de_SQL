@@ -169,17 +169,7 @@ FROM employees
 WHERE UPPER(employee_name) = 'JOHN';
 ```
 
-17. **Erro de Uso Incorreto de AS:**
-    - **Erro:** Uso incorreto da palavra-chave AS para alias de coluna.
-    - **Solução:** Utilize AS corretamente para atribuir alias a colunas ou tabelas.
-      ```sql
-      -- Errado
-      SELECT column1 AS column2, column3 AS FROM table_name;
-
-      -- Correto
-      SELECT column1 AS column
-      ```
-18. **Agrupamentos e funções de agregação**
+17. **Agrupamentos e funções de agregação**
     - **Erro:** Uso de duas coluas para agrupamente por data entrega mais de um resultado por datas iguais.
     - **Solução:** Utilizar apenas um agrupamento no group by e usar uma função de agregação(MAX) para entregar o maior valor daquela data
 
