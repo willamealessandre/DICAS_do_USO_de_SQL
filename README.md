@@ -170,3 +170,100 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
 
       -- Correto
       SELECT column1 AS column
+      ```
+
+      Claro, peço desculpas pela omissão. Aqui estão os exemplos corrigidos para os operadores `AND`, `OR`, `IS`, `BETWEEN`, `>`, `<`, e `=`:
+
+---
+
+**Operadores SQL: Uso e Exemplos**
+
+1. **IS:**
+   - **Uso:** Testa se um valor é igual a `NULL`.
+   - **Exemplo:**
+     ```sql
+     -- Errado
+     SELECT column_name
+     FROM table_name
+     WHERE column_name = NULL;
+
+     -- Correto
+     SELECT column_name
+     FROM table_name
+     WHERE column_name IS NULL;
+     ```
+
+2. **AND:**
+   - **Uso:** Combina condições em uma cláusula WHERE, ambas devem ser verdadeiras.
+   - **Exemplo:**
+     ```sql
+     -- Errado
+     SELECT column1, column2
+     FROM table_name
+     WHERE column1 > 100 AND column2 = 'value';
+
+     -- Correto
+     SELECT column1, column2
+     FROM table_name
+     WHERE column1 > 100 AND column2 = 'value';
+     ```
+
+3. **OR:**
+   - **Uso:** Combina condições em uma cláusula WHERE, pelo menos uma deve ser verdadeira.
+   - **Exemplo:**
+     ```sql
+     -- Errado
+     SELECT column1, column2
+     FROM table_name
+     WHERE column1 > 100 OR column2 = 'value';
+
+     -- Correto
+     SELECT column1, column2
+     FROM table_name
+     WHERE column1 > 100 OR column2 = 'value';
+     ```
+
+4. **BETWEEN:**
+   - **Uso:** Filtra o resultado dentro de um intervalo específico.
+   - **Exemplo:**
+     ```sql
+     -- Errado
+     SELECT column_name
+     FROM table_name
+     WHERE column_name > 10 AND column_name < 50;
+
+     -- Correto
+     SELECT column_name
+     FROM table_name
+     WHERE column_name BETWEEN 10 AND 50;
+     ```
+
+5. **> (maior que), < (menor que):**
+   - **Uso:** Compara valores para verificar se um é maior ou menor que o outro.
+   - **Exemplo:**
+     ```sql
+     -- Errado
+     SELECT column_name
+     FROM table_name
+     WHERE column_name > 100;
+
+     -- Correto
+     SELECT column_name
+     FROM table_name
+     WHERE column_name > 100;
+     ```
+
+6. **= (igual a):**
+   - **Uso:** Compara se os valores de duas expressões são iguais.
+   - **Exemplo:**
+     ```sql
+     -- Errado
+     SELECT column1, column2
+     FROM table_name
+     WHERE column1 = 'value';
+
+     -- Correto
+     SELECT column1, column2
+     FROM table_name
+     WHERE column1 = 'value';
+     ```
