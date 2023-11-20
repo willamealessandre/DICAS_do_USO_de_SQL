@@ -1,5 +1,5 @@
 # DICAS_do_USO_de_SQL
-Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que consegui solucionar, utilizei o chatGPT para fornecer exemplos.
+Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que consegui solucionar, segue abaixo os exemplos.
 **Dicas SQL: Sintaxe e Exemplos**
 
 1. **COUNT com GROUP BY:**
@@ -58,11 +58,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      JOIN departments d ON e.department_id = d.department_id;
      ```
 
----
-
-**Erros Comuns de Sintaxe e Soluções:**
-
-1. **Erro de Aspas Simples:**
+7. **Erro de Aspas Simples:**
    - **Erro:** Falta ou excesso de aspas simples ao redor de valores de texto.
    - **Solução:** Certifique-se de usar aspas simples corretamente.
      ```sql
@@ -73,7 +69,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT column_name FROM table_name WHERE name = 'John';
      ```
 
-2. **Erro de Ponto e Vírgula:**
+8. **Erro de Ponto e Vírgula:**
    - **Erro:** Esquecimento do ponto e vírgula no final da consulta.
    - **Solução:** Adicione o ponto e vírgula no final da consulta.
      ```sql
@@ -84,7 +80,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT column_name FROM table_name WHERE condition;
      ```
 
-3. **Erro de Nome de Coluna Ambíguo:**
+9. **Erro de Nome de Coluna Ambíguo:**
    - **Erro:** Uso de um nome de coluna ambíguo sem alias.
    - **Solução:** Utilize aliases ou especifique a tabela ao qualificar a coluna.
      ```sql
@@ -95,7 +91,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT table1.id FROM table1, table2 WHERE table1.id = 1;
      ```
 
-4. **Erro de Comentário Não Fechado:**
+10. **Erro de Comentário Não Fechado:**
    - **Erro:** Comentário SQL não fechado corretamente.
    - **Solução:** Certifique-se de fechar corretamente os comentários.
      ```sql
@@ -106,7 +102,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      /* Este é um comentário SQL corretamente fechado */
      ```
 
-5. **Erro de Uso Incorreto de JOIN:**
+11. **Erro de Uso Incorreto de JOIN:**
    - **Erro:** Uso incorreto da cláusula JOIN.
    - **Solução:** Especifique corretamente a condição de junção.
      ```sql
@@ -117,7 +113,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT column_name FROM table1 JOIN table2 ON table1.id = table2.id;
      ```
 
-6. **Erro de Uso de Palavras-Chave Reservadas:**
+12. **Erro de Uso de Palavras-Chave Reservadas:**
    - **Erro:** Uso de palavras-chave reservadas sem aspas ou escapes.
    - **Solução:** Coloque as palavras-chave entre aspas ou utilize escapes, se necessário.
      ```sql
@@ -128,7 +124,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT "order", "count" FROM orders;
      ```
 
-7. **Erro de Agrupamento e Ordenação:**
+13. **Erro de Agrupamento e Ordenação:**
    - **Erro:** Tentativa de selecionar colunas não agregadas sem agrupamento em uma consulta GROUP BY.
    - **Solução:** Inclua as colunas não agregadas na cláusula GROUP BY ou use funções de agregação.
      ```sql
@@ -139,7 +135,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT department, COUNT(employee_name) FROM employees GROUP BY department;
      ```
 
-8. **Erro de Sintaxe em Subconsulta:**
+14. **Erro de Sintaxe em Subconsulta:**
    - **Erro:** Subconsulta mal formada.
    - **Solução:** Verifique a sintaxe da subconsulta e certifique-se de que ela retorna um único valor ou conjunto de valores.
      ```sql
@@ -150,7 +146,7 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      SELECT column_name FROM table_name WHERE column_name IN (SELECT column_name FROM another_table WHERE condition);
      ```
 
-9. **Erro de Nome de Tabela Incorreto:**
+15. **Erro de Nome de Tabela Incorreto:**
    - **Erro:** Referência a uma tabela inexistente ou com nome incorreto.
    - **Solução:** Verifique e corrija o nome da tabela.
      ```sql
@@ -160,8 +156,20 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
      -- Correto
      SELECT column_name FROM existing_table;
      ```
+16. **Consulta Convertendo para Maiúsculas e Aplicando um Filtro:**
+```sql
+-- Errado
+SELECT employee_id, employee_name
+FROM employees
+WHERE employee_name = 'John';
+  
+-- Correto
+SELECT employee_id, UPPER(employee_name) AS employee_name_upper
+FROM employees
+WHERE UPPER(employee_name) = 'JOHN';
+```
 
-10. **Erro de Uso Incorreto de AS:**
+17. **Erro de Uso Incorreto de AS:**
     - **Erro:** Uso incorreto da palavra-chave AS para alias de coluna.
     - **Solução:** Utilize AS corretamente para atribuir alias a colunas ou tabelas.
       ```sql
@@ -171,10 +179,72 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
       -- Correto
       SELECT column1 AS column
       ```
+18. **Agrupamentos e funções de agregação**
+    - **Erro:** Uso de duas coluas para agrupamente por data entrega mais de um resultado por datas iguais.
+    - **Solução:** Utilizar apenas um agrupamento no group by e usar uma função de agregação(MAX) para entregar o maior valor daquela data
 
-      Claro, peço desculpas pela omissão. Aqui estão os exemplos corrigidos para os operadores `AND`, `OR`, `IS`, `BETWEEN`, `>`, `<`, e `=`:
+```sql
+-- consulta errada
+WITH noshow AS (
+    SELECT
+        mpv.data_venda,
+        mpo.data_orcamento,
+        mpo.valor_total as orcamento,
+        mpv.valor_total as vendas
+    FROM
+        moda_praia_produtos mpp
+    CROSS JOIN
+        moda_praia_vendas mpv
+    LEFT JOIN
+        moda_praia_orcamento mpo ON mpp.ID_produto = mpo.ID_produto AND mpv.data_venda = mpo.data_orcamento
+)
 
----
+SELECT
+    ns.data_venda AS data_venda,
+    ns.data_orcamento AS data_orcamento,
+    SUM(ns.orcamento) AS orcamento_total,
+    SUM(ns.vendas) AS vendas_total
+FROM
+    noshow ns
+LEFT JOIN
+    moda_praia_vendas v ON ns.data_venda = v.data_venda
+GROUP BY
+    ns.data_venda, ns.data_orcamento
+ORDER BY
+    ns.data_venda;
+
+-- Consulta Correta:
+
+
+WITH noshow AS (
+    SELECT
+        mpv.data_venda,
+        mpo.data_orcamento,
+        mpo.valor_total as orcamento,
+        mpv.valor_total as vendas
+    FROM
+        moda_praia_produtos mpp
+    CROSS JOIN
+        moda_praia_vendas mpv
+    LEFT JOIN
+        moda_praia_orcamento mpo ON mpp.ID_produto = mpo.ID_produto AND mpv.data_venda = mpo.data_orcamento
+)
+
+SELECT
+    ns.data_venda AS data,
+    MAX(ns.data_orcamento) AS data_orcamento,
+    SUM(ns.orcamento) AS orcamento_total,
+    SUM(ns.vendas) AS vendas_total
+FROM
+    noshow ns
+LEFT JOIN
+    moda_praia_vendas v ON ns.data_venda = v.data_venda
+GROUP BY
+    ns.data_venda
+ORDER BY
+    ns.data_venda;
+```
+
 
 **Operadores SQL: Uso e Exemplos**
 
@@ -197,30 +267,21 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
    - **Uso:** Combina condições em uma cláusula WHERE, ambas devem ser verdadeiras.
    - **Exemplo:**
      ```sql
-     -- Errado
-     SELECT column1, column2
-     FROM table_name
-     WHERE column1 > 100 AND column2 = 'value';
-
      -- Correto
      SELECT column1, column2
      FROM table_name
-     WHERE column1 > 100 AND column2 = 'value';
+     WHERE column1 > 100 AND column2 = 'value2';
      ```
 
 3. **OR:**
    - **Uso:** Combina condições em uma cláusula WHERE, pelo menos uma deve ser verdadeira.
    - **Exemplo:**
      ```sql
-     -- Errado
-     SELECT column1, column2
-     FROM table_name
-     WHERE column1 > 100 OR column2 = 'value';
-
+     
      -- Correto
      SELECT column1, column2
      FROM table_name
-     WHERE column1 > 100 OR column2 = 'value';
+     WHERE column1 > 100 OR column2 = 'value2';
      ```
 
 4. **BETWEEN:**
@@ -242,26 +303,18 @@ Aquei separei todos os problemas que vejo no dia-a-dia do meu aprendizado e que 
    - **Uso:** Compara valores para verificar se um é maior ou menor que o outro.
    - **Exemplo:**
      ```sql
-     -- Errado
-     SELECT column_name
-     FROM table_name
-     WHERE column_name > 100;
-
+    
      -- Correto
      SELECT column_name
      FROM table_name
-     WHERE column_name > 100;
+     WHERE column_name > 50;
      ```
 
 6. **= (igual a):**
    - **Uso:** Compara se os valores de duas expressões são iguais.
    - **Exemplo:**
      ```sql
-     -- Errado
-     SELECT column1, column2
-     FROM table_name
-     WHERE column1 = 'value';
-
+   
      -- Correto
      SELECT column1, column2
      FROM table_name
